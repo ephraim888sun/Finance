@@ -3,6 +3,7 @@ import datetime
 import requests
 from requests.exceptions import ConnectionError
 from bs4 import BeautifulSoup
+import time
 
 def web_content_div(web_content, class_path):
     web_content_div = web_content.find_all('div', {'class': class_path})
@@ -52,7 +53,6 @@ def real_time_price(stock_code):
     return price, change, volume, latest_pattern, one_year_target
 
 Stock = ['XOM', 'COP', 'CVX', 'RDS-B']
-
 
 while (True):
     info = []

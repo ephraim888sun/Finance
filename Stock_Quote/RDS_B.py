@@ -1,6 +1,9 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 
+print(plt.style.available)
+plt.style.use('Solarize_Light2')
+
 df = pd.read_csv('RDS_B.csv')
 print(df.head())
 
@@ -29,5 +32,6 @@ plt.xlabel('Year')
 plt.ylabel('Stock Price (USD)')
 plt.title('Royal Dutch Shell (RDS-B)')
 
+plt.savefig('RDS.png')
 plt.show()
 

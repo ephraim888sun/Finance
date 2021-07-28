@@ -1,8 +1,12 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 
+print(plt.style.available)
+plt.style.use('seaborn-pastel')
+
 df = pd.read_csv('CVX.csv')
 print(df.head())
+
 
 df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
 #print(df.loc[0, 'Date'].day_name())
@@ -29,5 +33,6 @@ plt.xlabel('Year')
 plt.ylabel('Stock Price (USD)')
 plt.title('Chevron Corporation (CVX)')
 
+plt.savefig('CVX.png')
 plt.show()
 

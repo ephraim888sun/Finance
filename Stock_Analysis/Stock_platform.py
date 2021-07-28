@@ -6,7 +6,7 @@ import matplotlib.ticker as mticker
 from mplfinance.original_flavor import candlestick_ohlc
 import datetime
 import math
-# from Stock import Stock
+from Stock import Stock
 
 fig = plt.figure()
 fig.patch.set_facecolor('#121416')
@@ -41,12 +41,12 @@ def string_to_number(df, column):
 def read_data_ohlc(filename, stock_code, usecols):
     df = pd.read_csv(filename, header=None, usecols=usecols,
                      names =['time', stock_code, 'change', 'volume', 'pattern', 'target'],
-                     index_col = 'time', parse_dates=[time])
+                     index_col = 'time', parse_dates=['time'])
 
     index_with_nan = df.index(df.isnull().any(axis=1))
     df.drop(index_with_nan, 0, inplace = True)
 
-    df.index = pdf.DatetimeINdex(df.index)
+    df.index = df.DatetimeINdex(df.index)
 
     df = string_to_number(df, stock_code)
     df = string_to_number(df, 'volume')
@@ -67,7 +67,7 @@ def read_data_ohlc(filename, stock_code, usecols):
     data['MAS20'] = data['close'].rolling(20).mean()
 
     data['volume_diff'] = df_vol.diff()
-    data[data[volume_diff]<0]= None
+    data[data['volume_diff']<0]= None
 
     index_with_nan = data.index[data.isnull().any(axis = 1)]
     data.drop(index_with_nan, 0, inplace = True)
@@ -91,7 +91,7 @@ def animate(i):
                     data['close'][candle]
         ohlc.append(append_me)
 
-    axl.clear()
+    ax1.clear()
     candlestick_ohlc(ax1, ohlc, width = 0.4, colorup='#18b800', colordown = '#ff3503')
 
     ax1.plot(data['MA5'], color = 'pink', linestyle = '-', label = '5 minute SMA')

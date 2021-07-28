@@ -1,6 +1,9 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 
+print(plt.style.available)
+plt.style.use('ggplot')
+
 df = pd.read_csv('COP.csv')
 print(df.head())
 
@@ -29,5 +32,6 @@ plt.xlabel('Year')
 plt.ylabel('Stock Price (USD)')
 plt.title('ConocoPhillips (COP)')
 
+plt.savefig('COP.png')
 plt.show()
 

@@ -1,6 +1,9 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 
+print(plt.style.available)
+plt.style.use('seaborn-dark-palette')
+
 df_XOM = pd.read_csv('XOM.csv')
 print(df_XOM.head())
 
@@ -29,5 +32,6 @@ plt.xlabel('Year')
 plt.ylabel('Stock Price (USD)')
 plt.title('Exxon Mobil Corporation (XOM)')
 
+plt.savefig('XOM.png')
 plt.show()
 

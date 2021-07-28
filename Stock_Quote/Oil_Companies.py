@@ -56,7 +56,7 @@ plt.legend()
 
 plt.tight_layout()
 
-# plt.savefig('Oil_Companies.png')
+plt.savefig('Oil_Companies.png')
 
 plt.show()
 
